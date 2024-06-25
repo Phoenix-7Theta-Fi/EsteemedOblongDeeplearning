@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     )
 
     return () => {
-      if (authListener) authListener.unsubscribe()
+      if (authListener && authListener.subscription) {
+        authListener.subscription.unsubscribe()
+      }
     }
   }, [])
 
